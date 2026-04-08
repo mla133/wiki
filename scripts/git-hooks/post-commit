@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e
+
+echo "🔄 Indexing wiki for RAG..."
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+python rag/indexer.py
+
+echo "✅ Wiki indexing complete"
