@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+
+# Local RAG state
+knowledge.db
+
+# Logs
+*.log
+
+# Editor
+.vscode/
+.idea/
+
