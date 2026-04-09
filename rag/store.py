@@ -1,9 +1,10 @@
 # rag/store.py
 from __future__ import annotations
 import sqlite3
-import json
 from pathlib import Path
 from typing import Iterable
+import json
+import math
 
 DB_PATH = Path("knowledge.db")
 
@@ -140,6 +141,34 @@ class VectorStore:
         }
 
 
+    # --- vector search ---------------------------------------------
 
+    def search(self, query_embedding: list[float], k: int = 5):
+        """
+        Return top-k (score, path, content) results.
+        """
+        cur = self.conn.cursor()
 
+        rows = cur.execute("""
+            SELECT
+                d.path,
+                c.content,
+                c.embedding
+            FROM chunks c
+            JOIN documents d ON d.doc_id = c.doc_id
+        """).fetchall()
 
+        def cosine(a, b):
+            dot = sum(x * y for x, y in zip(a, b))
+            na = math.sqrt(sum(x * x for x in a))
+            nb = math.sqrt(sum(y * y for y in b))
+            return dot / (na * nb) if na and nb else 0.0
+
+        scored = []
+        for path, content, emb_json in rows:
+            emb = json.loads(emb_json)
+            score = cosine(query_embedding, emb)
+            scored.append((score, path, content))
+
+        scored.sort(reverse=True, key=lambda x: x[0])
+        return scored[:k]
