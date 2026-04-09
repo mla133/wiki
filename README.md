@@ -17,3 +17,13 @@ cd wiki
 ```
 This will copy the current git hooks to the .git/hooks directory
 
+## System Requirements for this project
+
+This project expects a local Ollama server to be running.
+
+- Install Ollama:  https://ollama.com
+- Start the server:
+    ollama serve
+
+The CLI communicates with Ollama over HTTP at:
+    http://localhost:11434

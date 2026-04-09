@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+echo "🔍 Running pre-commit checks..."
+
+# Ensure virtualenv Python if present
+if [ -f ".venv/bin/python" ]; then
+  PYTHON=".venv/bin/python"
+else
+  PYTHON="python"
+fi
+
+# Fast unit tests only
+echo "🧪 Running pytest..."
+$PYTHON -m pytest tests/
+
+echo "✅ Pre-commit checks passed"

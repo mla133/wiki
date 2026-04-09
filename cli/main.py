@@ -28,8 +28,8 @@ def cmd_files(args: argparse.Namespace) -> None:
         print(p.relative_to(root))
 
 def cmd_ask(args: argparse.Namespace) -> None:
-    from rag.retriever import answer
-    print(answer(args.question, k=args.k))
+    from rag.router import answer_with_routing
+    print(answer_with_routing(args.question, k=args.k))
 
 def cmd_search(args: argparse.Namespace) -> None:
     from rag.store import VectorStore
