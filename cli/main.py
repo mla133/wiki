@@ -115,10 +115,10 @@ def cmd_index(args: argparse.Namespace) -> None:
     """
     Re-index the wiki into the RAG store.
     """
-    from rag.indexer import index_wiki
+    from rag.indexer import index_wiki_incremental
 
-    index_wiki()
-    print("✅ Wiki indexed successfully")
+    index_wiki_incremental()
+    print("✅ Incremental index complete")
 
 
 # ---------------------------------------------------------------------
