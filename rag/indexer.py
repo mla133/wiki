@@ -10,6 +10,7 @@ def chunk(text, size=500):
 
 def index_wiki(root="docs/wiki"):
     store = VectorStore()
+    store.clear()
     for md in Path(root).rglob("*.md"):
         text = md.read_text(encoding="utf-8")
         for part in chunk(text):

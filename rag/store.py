@@ -39,3 +39,7 @@ class VectorStore:
 
         scored.sort(reverse=True)
         return scored[:k]
+
+    def clear(self):
+        self.conn.execute("DELETE from chunks")
+        self.conn.commit()
