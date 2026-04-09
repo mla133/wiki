@@ -109,3 +109,37 @@ class VectorStore:
             for (h, c, e) in chunks
         ))
         self.conn.commit()
+
+    # --- stats ------------------------------------------------------
+
+    def stats(self) -> dict:
+        cur = self.conn.cursor()
+
+        index_row = cur.execute(
+            "SELECT git_commit, indexed_at FROM index_state WHERE id = 1"
+        ).fetchone()
+
+        doc_count = cur.execute(
+            "SELECT COUNT(*) FROM documents"
+        ).fetchone()[0]
+
+        chunk_count = cur.execute(
+            "SELECT COUNT(*) FROM chunks"
+        ).fetchone()[0]
+
+        chunk_docs = cur.execute(
+            "SELECT COUNT(DISTINCT doc_id) FROM chunks"
+        ).fetchone()[0]
+
+        return {
+            "indexed_commit": index_row[0] if index_row else None,
+            "indexed_at": index_row[1] if index_row else None,
+            "documents": doc_count,
+            "chunks": chunk_count,
+            "docs_with_chunks": chunk_docs,
+        }
+
+
+
+
+
