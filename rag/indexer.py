@@ -1,7 +1,7 @@
 # rag/indexer.py
 from pathlib import Path
-from ollama_client import embed
-from store import VectorStore
+from rag.ollama_client import embed
+from rag.store import VectorStore
 
 def chunk(text, size=500):
     words = text.split()
