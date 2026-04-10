@@ -3,7 +3,7 @@ import datetime
 import sys
 
 # Set the directory path and file name
-dir_path = os.path.expanduser('~/wiki')
+dir_path = os.path.expanduser('~/wiki/docs/wiki')
 file_name = 'inbox.md'
 
 # Create the directory if it doesn't exist
