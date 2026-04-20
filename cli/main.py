@@ -44,12 +44,12 @@ def cmd_status(args: argparse.Namespace) -> None:
     root = repo_root()
     db = root / "knowledge.db"
     print(f"Repo root: {root}")
-    print(f"knowledge.db: {'✅' if db.exists() else '❌'}")
+    print(f"knowledge.db: {'Y' if db.exists() else 'X'}")
 
 def cmd_index(args: argparse.Namespace) -> None:
     from rag.indexer import index_wiki_incremental
     index_wiki_incremental()
-    print("✅ Index updated")
+    print(f"Index updated")
 
 def cmd_stats(args: argparse.Namespace) -> None:
     from rag.store import VectorStore

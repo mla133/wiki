@@ -1,7 +1,8 @@
 # rag/ollama_client.py
 import requests
 
-OLLAMA_URL = "http://localhost:11434"
+#OLLAMA_URL = "http://localhost:11434"
+OLLAMA_URL = "http://localhost:8080"
 
 def embed(text, model="nomic-embed-text"):
     r = requests.post(
@@ -12,7 +13,7 @@ def embed(text, model="nomic-embed-text"):
     r.raise_for_status()
     return r.json()["embedding"]
 
-def chat(prompt, context="", model="llama3:latest"):
+def chat(prompt, context="", model="gemma4:e2b"):
     full_prompt = f"""
 You are a personal wiki assistant.
 Use the provided context to answer precisely.
