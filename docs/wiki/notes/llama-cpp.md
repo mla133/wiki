@@ -86,7 +86,9 @@ llama.cpp requires you to specify them explicitly.
 
 ## 7. Exact llama-3 Chat Template
 For LLaMA‑3 Instruct models, llama.cpp internally produces exactly:
-Plain Text<|begin_of_text|><|system|>You are a helpful assistant.<|user|>Explain gravity simply.<|assistant|>Show more lines
+```Plain Text
+<|begin_of_text|><|system|>You are a helpful assistant.<|user|>Explain gravity simply.<|assistant|>
+```
 The model begins generating tokens after <|assistant|>.
 This structure is mandatory for LLaMA‑3‑Instruct models.
 

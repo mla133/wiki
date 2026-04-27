@@ -72,6 +72,7 @@ def content_hash(text: str) -> str:
 
 def index_file(store: VectorStore, path: Path, commit: str) -> None:
     rel_path = str(path)
+    print(f"Indexing: {path}")
     text = path.read_text(encoding="utf-8")
 
     doc_id = store.upsert_document(rel_path, commit)
