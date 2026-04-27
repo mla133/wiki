@@ -46,17 +46,23 @@ C:\Users\<you>\llama-registry\
 
 ## 4. Hugging Face (-hf) Is Download‑Only
 Using:
-Markdownllama-cli -hf ggml-org/gemma-3-1b-it-GGUFShow more lines
+```Markdown
+llama-cli -hf ggml-org/gemma-3-1b-it-GGUF
+```
 
 Downloads GGUF files into:
-Plain Text%USERPROFILE%\.cache\huggingface\hubShow more lines
+```Plain Text
+%USERPROFILE%\.cache\huggingface\hub
+```
 
 Loads the model from that cache path
 
 Important
 Once you later run:
-PowerShellllama-cli -m C:\path\to\model.ggufShow more lines
-➡️ The HF cache is no longer used or consulted at all.
+```PowerShell
+llama-cli -m C:\path\to\model.gguf
+```
+The HF cache is no longer used or consulted at all.
 The model is memory-mapped directly from the specified file path.
 
 ## 5. Promoting GGUFs Into the Registry
