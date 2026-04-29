@@ -1,7 +1,7 @@
 # rag/ollama_client.py
 import requests
 
-OLLAMA_URL = "http://localhost:11434"
+OLLAMA_URL = "http://localhost:8123"
 #OLLAMA_URL = "http://localhost:8080"
 
 def embed(text, model="nomic-embed-text"):
